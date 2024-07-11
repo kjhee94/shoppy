@@ -35,23 +35,24 @@ export default function ProductNew() {
   };
 
   return (
-    <section className="w-full px-4">
-      <h2 className="text-xl my-4">+ Add New Product</h2>
-      <div className="flex">
+    <section className="w-full px-4 text-center">
+      <h3 className="text-lg mb-4 font-semibold">제품 등록</h3>
+      <div className="flex flex-col md:flex-row  items-center">
         {!file && (
-          <div className="w-80 bg-gray-300 text-center">
-            이미지를 선택해 주세요
+          <div className="w-80 h-[440px] bg-gray-300 flex items-center justify-center shrink-0">
+            <p>이미지를 선택해 주세요.</p>
           </div>
         )}
         {file && (
           <img
-            className="w-80"
+            className="w-80 h-[440px] object-cover shrink-0"
             src={URL.createObjectURL(file)}
             alt="local_file"
           />
         )}
-        <form id="AddNewProductForm" className="flex flex-col ml-4" onSubmit={handleSubmit}>
+        <form className="flex flex-col w-full my-4 md:ml-4" onSubmit={handleSubmit}>
           <input
+            className="mt-0"
             type="file"
             accept="image/*"
             name="file"
@@ -64,7 +65,7 @@ export default function ProductNew() {
             value={product.title ?? ""}
             placeholder="제품명"
             required
-            autocomplete="off"
+            autoComplete="off"
             onChange={handleChange}
           />
           <input
@@ -81,7 +82,7 @@ export default function ProductNew() {
             value={product.category ?? ""}
             placeholder="카테고리"
             required
-            autocomplete="off"
+            autoComplete="off"
             onChange={handleChange}
           />
           <input
@@ -90,7 +91,7 @@ export default function ProductNew() {
             value={product.description ?? ""}
             placeholder="제품 설명"
             required
-            autocomplete="off"
+            autoComplete="off"
             onChange={handleChange}
           />
           <input
@@ -100,7 +101,7 @@ export default function ProductNew() {
             value={product.options ?? ""}
             placeholder="옵션들_콤마(,)로 구분"
             required
-            autocomplete="off"
+            autoComplete="off"
             onChange={handleChange}
           />
           <Button
