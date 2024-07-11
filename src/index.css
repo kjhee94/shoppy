@@ -31,3 +31,11 @@ body {
 h2 {
   font-family: 'Cafe24Decobox';
 }
+
+input {
+  @apply p-4 outline-none border border-gray-300 my-1
+}
+
+#AddNewProductForm > input {
+  @apply w-full
+}
