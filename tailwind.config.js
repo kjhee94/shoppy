@@ -9,6 +9,9 @@ module.exports = {
         ugray : '#272727',
         border : '#363636',
         brand : '#F96162',
+      },
+      backgroundImage: {
+        banner: `url('../public/images/banner.jpg')`
       }
     },
   },

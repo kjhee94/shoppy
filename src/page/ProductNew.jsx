@@ -36,11 +36,10 @@ export default function ProductNew() {
 
   return (
     <section className="w-full px-4 text-center">
-      <h3 className="text-lg mb-4 font-semibold">제품 등록</h3>
-      <div className="flex flex-col md:flex-row  items-center">
+      <div className="flex flex-col md:flex-row">
         {!file && (
           <div className="w-80 h-[440px] bg-gray-300 flex items-center justify-center shrink-0">
-            <p>이미지를 선택해 주세요.</p>
+            <p>No Image</p>
           </div>
         )}
         {file && (
@@ -50,7 +49,7 @@ export default function ProductNew() {
             alt="local_file"
           />
         )}
-        <form className="flex flex-col w-full my-4 md:ml-4" onSubmit={handleSubmit}>
+        <form className="flex flex-col w-full my-4 md:ml-4 md:mt-0" onSubmit={handleSubmit}>
           <input
             className="mt-0"
             type="file"
@@ -99,7 +98,7 @@ export default function ProductNew() {
             type="text"
             name="options"
             value={product.options ?? ""}
-            placeholder="옵션들_콤마(,)로 구분"
+            placeholder="옵션 ( , 로 구분)"
             required
             autoComplete="off"
             onChange={handleChange}
