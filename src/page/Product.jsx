@@ -13,7 +13,7 @@ export default function Product() {
           <li className="mr-2" key={index}>
             <button
               className={`py-1 px-3 rounded-full ${
-                category === value ? "bg-brand border-brand text-white" : "border border-gray-400 "
+                category === value ? "bg-brand border-brand text-white" : "border border-gray-300 "
               }`}
               onClick={() => {
                 setCategory(value);

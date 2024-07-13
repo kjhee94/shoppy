@@ -4,10 +4,6 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        bg : '#0F0F0F',
-        text : '#f1f1f1',
-        ugray : '#272727',
-        border : '#363636',
         brand : '#F96162',
       },
       backgroundImage: {
