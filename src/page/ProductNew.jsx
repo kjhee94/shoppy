@@ -1,14 +1,14 @@
 import React, { useState } from "react";
 import Button from "../components/ui/Button";
 import { uploadImage } from "../api/uploader";
-import { addNewProduct } from "../api/firebase";
 import { useNavigate } from "react-router-dom";
+import useProducts from "../hooks/useProducts";
 
 export default function ProductNew() {
   const [product, setProduct] = useState({});
   const [file, setFile] = useState();
   const [isUploading, setIsUploading] = useState(false);
-
+  const { addProduct } = useProducts();
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -25,18 +25,18 @@ export default function ProductNew() {
     setIsUploading(true);
     uploadImage(file) //
       .then((url) => {
-        addNewProduct(product, url) //
-          .then(() => {
+        addProduct.mutate({ product, url }, {
+          onSuccess: () => {
             alert("제품이 추가되었습니다.");
             navigate("/products");
-          });
+        }})
       })
       .finally(() => setIsUploading(false));
   };
 
   return (
-    <section className="w-full p-4 flex flex-col md:flex-row items-center">
-      <div className="w-80 h-[440px] bg-gray-300 flex items-center justify-center shrink-0">
+    <section className="w-full p-4 flex flex-col sm:flex-row items-center">
+      <div className="w-full min-h-10 sm:w-80 sm:h-[440px] bg-gray-300 flex items-center justify-center shrink-0">
         {!file && <p>No Image</p>}
         {file && (
           <img
@@ -47,7 +47,7 @@ export default function ProductNew() {
         )}
       </div>
       <form
-        className="flex flex-col w-full mt-4 md:ml-4 md:mt-0"
+        className="flex flex-col w-full mt-4 sm:ml-4 sm:mt-0"
         onSubmit={handleSubmit}
       >
         <input

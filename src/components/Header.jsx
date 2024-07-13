@@ -1,10 +1,11 @@
 import React from "react";
 import { FaShopify } from "react-icons/fa6";
-import { HiOutlineShoppingBag, HiOutlinePencil } from "react-icons/hi2";
+import { HiOutlinePencil } from "react-icons/hi2";
 import { Link } from "react-router-dom";
 import User from "./User";
 import Button from "./ui/Button";
 import { useAuthContext } from "../context/AuthContext";
+import CartStatus from "./CartStatus";
 
 export default function Header() {
   const { user, login, logout } = useAuthContext();
@@ -19,7 +20,7 @@ export default function Header() {
         <Link to="/products">Product</Link>
         {user && (
           <Link to="/carts" className="p-2 rounded-full hover:bg-gray-200">
-            <HiOutlineShoppingBag className="text-xl " />
+            <CartStatus />
           </Link>
         )}
         {user && user.isAdmin && (
